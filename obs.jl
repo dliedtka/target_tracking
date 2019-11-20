@@ -1,4 +1,4 @@
-SENSOR_RANGE = 100
+SENSOR_RANGE = 150
 
 function obs1(state)
     rel_brg = state[2]-state[4]

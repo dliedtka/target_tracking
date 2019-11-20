@@ -65,6 +65,7 @@ end
 
 # returns random argument of tied maxima
 # else (no ties) mimics argmax
+
 function argmax2(thing, rng)
     options = []
     max = maximum(thing)
@@ -76,4 +77,21 @@ function argmax2(thing, rng)
     return rand(rng, options)
 end
 
+function max2(thing, rng)
+    options = []
+    max = maximum(thing)
+    for (i, x) in enumerate(thing)
+        if x == max
+            push!(options, i)
+        end
+    end   
+    return thing[rand(rng, options)]
+end
 
+
+function next_action(thing, epsilon, rng)
+    if rand(rng) > epsilon
+        return trunc(Int, argmax2(thing, rng))
+    end
+    return trunc(Int, rand(rng, 1:length(thing)))
+end
