@@ -10,12 +10,7 @@ states_qual = [q for q in [0, 1, 10]]
 #states_hdg = [30*h for h in 1:12]
 states_spd = [1,2];
 
-#somestates_x, somestates_y = [0., 1., 2.], [0, 90, 180, 270, 360]
 grid = RectangleGrid(states_r, states_θ, states_crs, states_spd, states_qual)  	# rectangular grid
-
-#gridData = [8., 1., 6., 3., 5., 7., 4., 9., 2.]   	# vector of value data at each cut
-#x = [1.5, 325]
-#@show interpolants(grid, x)
 
 wrapmap = Dict()
 
@@ -31,8 +26,6 @@ for r in states_r
     end
 end
 
-polants =  [12.5, 358, 270, 2, 2]
-
 function polar_grid(vec, grid=grid)
     polants = interpolants(grid, vec)
     for (i, p) in enumerate(polants[1])
@@ -41,19 +34,6 @@ function polar_grid(vec, grid=grid)
         end    
     end
     return polants
-end
-
-function weighted_grid(b::ParticleCollection)
-    beta = Dict()
-    for row in particles(b)
-        for (i, x) in enumerate(polar_grid(row)[1])
-            if !haskey(beta, x)
-                beta[x] = 0
-            end
-            beta[x] += polar_grid(row)[2][i]
-        end
-    end
-    return beta
 end
 
 function weighted_grid_2(b::ParticleCollection)
@@ -72,7 +52,6 @@ function weighted_grid_2(b::ParticleCollection)
             beta[x] += polar_grid(row)[2][i]
         end
     end
-
     return beta
 end
 
