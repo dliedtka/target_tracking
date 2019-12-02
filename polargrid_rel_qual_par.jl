@@ -36,11 +36,31 @@ function polar_grid(vec, grid=grid)
     return polants
 end
 
+#function weighted_grid_2(b::ParticleCollection)
+#    beta = zeros(length(grid));
+#    for row in particles(b)
+#        for (i, x) in enumerate(polar_grid(row)[1])
+#            beta[x] += polar_grid(row)[2][i]
+#        end
+#   end
+#    vv = var(beta)
+#    beta = zeros(length(grid));
+#    for row in particles(b)
+#        row = [float(r) for r in row]
+#        push!(row, vv)
+#        for (i, x) in enumerate(polar_grid(row)[1])
+#            beta[x] += polar_grid(row)[2][i]
+#        end
+#    end
+#    return beta
+#end
+
 function weighted_grid_2(b::ParticleCollection)
-    beta = zeros(length(grid));
-    for row in particles(b)
-        for (i, x) in enumerate(polar_grid(row)[1])
-            beta[x] += polar_grid(row)[2][i]
+    beta = spzeros(length(grid))
+    mapout = pmap(polar_grid, particles(b))
+    for row in mapout
+        for j in 1:length(row[1])
+            beta[row[1][j]] += row[2][j]
         end
     end
     vv = var(beta)
@@ -54,26 +74,6 @@ function weighted_grid_2(b::ParticleCollection)
     end
     return beta
 end
-
-#function weighted_grid_2(b::ParticleCollection)
-#    beta = spzeros(length(grid))
-#    mapout = pmap(polar_grid, particles(b))
-#    for row in mapout
-#        for j in 1:length(row[1])
-#            beta[row[1][j]] += row[2][j]
-#        end
-#    end
-#    vv = var(beta)
-#    beta = zeros(length(grid));
-#    for row in particles(b)
-#        row = [float(r) for r in row]
-#        push!(row, vv)
-#        for (i, x) in enumerate(polar_grid(row)[1])
-#            beta[x] += polar_grid(row)[2][i]
-#        end
-#    end
-#    return beta
-#end
 
 # returns random argument of tied maxima
 # else (no ties) mimics argmax
