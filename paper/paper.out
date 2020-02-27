@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related\040Work}{}% 2
+\BOOKMARK [1][-]{section.3}{Methods}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Problem\040Structure}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Reinforcement\040Learning}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Monte-Carlo\040Tree\040Search\040}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Simulations}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Reinforcement\040Learning}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Monte-Carlo\040Tree\040Search}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{Results\040and\040Discussion}{}% 10
+\BOOKMARK [2][-]{subsection.5.1}{Reinforcement\040Learning}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.2}{Monte-Carlo\040Tree\040Search}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{Conclusions\040and\040Future\040Work}{}% 13
